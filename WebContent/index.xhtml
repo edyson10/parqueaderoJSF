@@ -4,24 +4,31 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"> 
-      
 <h:head>
 	<meta charset="UTF-8"/>
 	<title>Parqueadero</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 </h:head>
 <h:body>
-	<h1>Parqueadero</h1>
+	<b:row>
+		<b:column medium-screen="6"></b:column>
+		<b:column medium-screen="2">
+			<img src="img/parqueadero.png" width="80px;" height="80px;"/>
+		</b:column>
+		<b:column medium-screen="1">
+			<h1 align="center">Parqueadero</h1>
+		</b:column>
+		<b:column medium-screen="4"></b:column>
+	</b:row>
 	<h:form id="loginForm">
 	  <b:container layout="fluid">
-	    <b:panel title="login screen" look="primary">
+	    <b:panel title="Pantalla Login" look="primary">
 	      <b:row>
 	        <b:column medium-screen="2">
-	          <h:outputText value="Username:" for="username" />
+	          <h:outputText value="Usuario:" for="username" />
 	        </b:column>
 	        <b:column medium-screen="4">
-	          <b:inputText placeholder="Username" id="username" value=""
-	                       ajax="true" autocomplete="false" update="@(.message)">
+	          <b:inputText placeholder="Digite su usuario" id="username" value="">
 	            <f:facet name="prepend">
 	              <b:icon name="user" />
 	            </f:facet>
@@ -33,11 +40,10 @@
 	      </b:row>
 	      <b:row tooltip="This password has fancy error messages.">
 	        <b:column medium-screen="2">
-	          <h:outputText value="Password:" />
+	          <h:outputText value="Contraseña:" />
 	        </b:column>
 	        <b:column medium-screen="4">
-	          <b:inputSecret placeholder="Password" id="password" value=""
-	                         ajax="true" autocomplete="false" update="@(.message)">
+	          <b:inputSecret placeholder="Digite su contraseña" id="password" value="">
 	            <f:facet name="prepend">
 	              <b:iconAwesome name="key" />
 	            </f:facet>
@@ -48,13 +54,25 @@
 	        </b:column>
 	      </b:row>
 	      <b:row>
-	        <b:column span="2" offset="2">
-	          <b:commandButton value="login" onclick="ajax:loginBean.login()" update="@form" look="primary"
-	                           style="width:100%" />
+	      	<b:column medium-screen="2">
+	          <h:outputText value="Rol:" for="username" />
 	        </b:column>
-	        <b:column span="2">
-	          <b:commandButton value="password forgotten" onclick="ajax:loginBean.forgotPassword()" update="@form"
-	                           look="danger" style="width:100%" />
+	      	<b:column medium-screen="10">
+	      		<b:formGroup>
+    			<b:selectOneMenu value="#{selectOneMenuBean.type}" colMd="2" required="true" labelColMd="2">
+      				<f:selectItem itemLabel="(Seleccione)" itemValue="" />
+				    <f:selectItem itemLabel="Administrador" itemValue="1" />
+				    <f:selectItem itemLabel="Auxiliar" itemValue="2" />
+				    <f:selectItem itemLabel="Caja" itemValue="3" />
+				    <f:selectItem itemLabel="Porteria" itemValue="4" />
+    			</b:selectOneMenu>
+  				</b:formGroup>
+	      	</b:column>
+	      </b:row>
+	      <br/>
+	      <b:row>
+	        <b:column span="2" offset="2">
+	          <b:commandButton value="Iniciar Sesion" onclick="ajax:loginBean.login()" update="@form" look="primary" style="width:100%" />
 	        </b:column>
 	      </b:row>
 	    </b:panel>

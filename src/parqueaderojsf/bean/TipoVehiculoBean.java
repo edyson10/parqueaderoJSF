@@ -1,3 +1,4 @@
+/*
 package com.parqueadero.jsf.bean;
 
 import java.util.List;
@@ -27,3 +28,4 @@ public class TipoVehiculoBean {
 		return tvDao.list();
 	}
 }
+*/

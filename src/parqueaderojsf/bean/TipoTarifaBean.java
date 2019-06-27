@@ -1,3 +1,4 @@
+/*
 package com.parqueadero.jsf.bean;
 
 import java.util.List;
@@ -28,3 +29,4 @@ public class TipoTarifaBean {
 		return ttDao.list();
 	}
 }
+*/

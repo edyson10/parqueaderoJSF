@@ -1,3 +1,4 @@
+/*
 package com.parqueadero.jsf.bean;
 
 import java.util.Date;
@@ -82,5 +83,7 @@ public class PorteroBean {
 		TamanioDao tDao = new TamanioDao();
 		return tDao.list();
 	}
-	*/
+	
 }
+
+*/

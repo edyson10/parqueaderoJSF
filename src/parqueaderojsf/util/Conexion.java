@@ -24,11 +24,11 @@ public class Conexion<T> {
 		this.c = c;
 	}
 	
-	public void setC(Class<T> c){
+	public void setC(Class<T> c) {
 		this.c = c;
 	}
 	
-	public static EntityManager getEm(){
+	public static EntityManager getEm() {
 		if ( em == null ) {
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("parqueaderoExaJSF");
             em = emf.createEntityManager();
@@ -36,19 +36,19 @@ public class Conexion<T> {
 		return em;
 	}
 	
-	public <E> T find(E id){
+	public <E> T find(E id) {
 		T object = (T) em.find(c, id);
 		return object;
 	}
 	
-	public List<T> list(){
+	public List<T> list() {
 		TypedQuery<T> consulta= em.createNamedQuery(c.getSimpleName()+".findAll", c);
 		List<T> lista = (List<T>) consulta.getResultList();
 		return lista;
 	}
 	
 	
-	public void insert(T o){
+	public void insert(T o) {
 		try {
 			em.getTransaction().begin();
 			em.persist(o);
@@ -61,7 +61,7 @@ public class Conexion<T> {
 		
 	}
 	
-	public void update(T o){
+	public void update(T o) {
 		try {
 			em.getTransaction().begin();
 			em.merge(o);
@@ -74,7 +74,7 @@ public class Conexion<T> {
 		
 	}
 	
-	public void delete(T o){
+	public void delete(T o) {
 		try {
 			em.getTransaction().begin();
 			em.remove(o);
@@ -87,8 +87,7 @@ public class Conexion<T> {
 		
 	}
 	
-	public <E> T findByField(String fieldName, E fieldValue)
-	{
+	public <E> T findByField(String fieldName, E fieldValue) {
 	    CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 	    CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(c);
 	    Root<T> root = criteriaQuery.from(c);
@@ -111,8 +110,7 @@ public class Conexion<T> {
 	    return returnObject;
 	}
 	
-	public <E> List<T> findByFieldList(String fieldName, E fieldValue)
-	{
+	public <E> List<T> findByFieldList(String fieldName, E fieldValue) {
 	    CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 	    CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(c);
 	    Root<T> root = criteriaQuery.from(c);
@@ -126,9 +124,6 @@ public class Conexion<T> {
 
 	    List<T> queryResult = query.getResultList();
 	    
-	    return queryResult;
-
-	   
-	}
-	
+	    return queryResult;   
+	}	
 }

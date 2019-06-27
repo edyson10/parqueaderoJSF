@@ -1,3 +1,4 @@
+/*
 package com.parqueadero.jsf.bean;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import com.parqueadero.jpa.entity.Usuariorol;
 @RequestScoped
 public class UsuarioBean {
 
-	/************* Usuario Auxiliar ***/
+	/************* Usuario Auxiliar
 	private Usuario u= new Usuario();
 	private Cliente c= new Cliente();
 	
@@ -185,3 +186,4 @@ public class UsuarioBean {
 		this.filter = filter;
 	}
 }
+*/

@@ -1,3 +1,5 @@
+/*
+
 package com.parqueadero.jsf.bean;
 
 
@@ -77,3 +79,4 @@ public class UsuarioCajaBean {
 		this.pago = pago;
 	}	
 }
+*/

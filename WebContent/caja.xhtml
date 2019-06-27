@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"> 
+<h:head>
+	<meta charset="UTF-8"/>
+	<title>Parqueadero</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="shortcut icon" href="img/parqueadero.png" type="image/x-icon" />
+</h:head>
+<h:body>
+	<b:navBar brand="Parking" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
+  		<b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
+    		<b:navLink value="Inicio" href="#"></b:navLink>
+		</b:navbarLinks>
+		<b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
+		<b:navbarLinks pull="right" styleClass="hidden-xs">
+		    <b:dropMenu align="right" value="Menu" contentDisabled="#{navBarBean.dropMenuDisabled}">
+				<b:navLink value="Configuracion" href="#"></b:navLink>
+				<b:navLink value="Perfil" href="#"></b:navLink>
+				<b:navLink></b:navLink>
+				<b:navLink value="Cerrar Sesión" href="#"></b:navLink>
+			</b:dropMenu>
+		  </b:navbarLinks>
+	</b:navBar>
+	<h1 align="center">Parqueadero</h1>
+	<b:row styleClass="show-grid">
+  		<b:column col-xs="12" col-md="12">
+  			<h:form id="loginForm">
+			  <b:container layout="fluid">
+			    <b:panel title="Sesión de caja" look="primary">
+			    	<b:row>
+			    		<b:column col-xs="2" col-md="2" >
+			    		</b:column>
+			    		<b:column col-xs="2" col-md="2" >
+			    			<b:row>
+			    				<b:link href="#"><img src="img/simbolo_moneda.png" width="150px;" height="150px;" /></b:link>
+			    			</b:row>
+			    			<br/>
+			    			<b:row>
+			    				<p align="center">PAGAR</p>
+			    			</b:row>
+			    		</b:column>
+			    		<b:column col-xs="2" col-md="2" align="center">
+			    			<b:row>
+  								<b:link href="#"><img src="img/simbolo_moneda.png" width="150px;" height="150px;" /></b:link>
+  							</b:row>
+			    			<br/>
+			    			<b:row>
+			    				<p align="center">PAGOS</p>
+			    			</b:row>
+  						</b:column>
+			    		<b:column col-xs="2" col-md="2" align="center">
+			    			<b:row>
+  								<b:link href="#"><img src="img/hoja_papel.png" width="150px;" height="150px;" /></b:link>
+  							</b:row>
+			    			<br/>
+			    			<b:row>
+			    				<p align="center">PROCESOS</p>
+			    			</b:row>
+  						</b:column>
+  						<b:column  col-md="2" align="center">
+  							<b:row>
+  								<b:link href="registrar.xhtml"><img src="img/procesos.png" width="150px;" height="150px;" /></b:link>
+  							</b:row>
+			    			<br/>
+			    			<b:row>
+			    				<p align="center">INFORMES</p>
+			    			</b:row>
+  						</b:column>
+  						<b:column col-md="2" align="center"></b:column>
+			    	</b:row>
+			    </b:panel>
+			  </b:container>
+			</h:form>
+  		</b:column>
+	</b:row>
+</h:body>
+</html>

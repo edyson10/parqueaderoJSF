@@ -1,58 +1,21 @@
+package parqueaderojsf.bean;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
+import parqueaderojsf.model.dao.UsuarioDAO;
 import parqueaderojsf.model.entities.Usuario;
 
-@ManagedBean(name = "bean1")
+@ManagedBean(name = "loginbean")
 @SessionScoped
 public class LoginBean {
   
-	private Usuario usuario= new Usuario();
-	private Usuario validado= null;
+	private Usuario usuario = new Usuario();
+	private Usuario validado = null;
 	private String fecha;
-	
-	public String logearse() {
-		if (validado == null) {
-			FacesMessage message = null;
-			UsuarioDAO daoU = new UsuarioDAO();
-
-			Usuario us = daoU.findByField("email", usuario.getEmail());
-			if (us != null) {
-				if (usuario.getClave().contentEquals(us.getClave())) {
-					this.validado = us;
-					this.usuario = new Usuario();
-					return "inicio?faces-redirect=true";
-				} else {
-					message = new FacesMessage(FacesMessage.SEVERITY_WARN, "", "Contraseña Incorrecta");
-				}
-			} else {
-				message = new FacesMessage(FacesMessage.SEVERITY_FATAL, "REGISTRASE", "Usuario No existe");
-			}
-			FacesContext.getCurrentInstance().addMessage(null, message);
-		}
-		return "login?faces-redirect=true";
-	}
-	
-	public String registrarse() {
-		FacesMessage message = null;
-		UsuarioDAO daoU = new UsuarioDAO();
-		Usuario us = daoU.findByField("email", usuario.getEmail());
-		if (us == null) {
-			usuario.setFechanacimiento(java.sql.Date.valueOf(fecha));
-			daoU.insert(usuario);
-			this.usuario = new Usuario();
-			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Success",
-					"Te registrarse correctamente ahora inicia sesion");
-		} else {
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "", "Email ya en USO");
-		}
-		FacesContext.getCurrentInstance().addMessage(null, message);
-		PrimeFaces.current().ajax().addCallbackParam("loggeddIn", (us != null) ? true : false);
-		return "logi?faces-redirect=truen";
-	}
+	String alerta = "";
+	String alerta2 = "";
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -73,5 +36,44 @@ public class LoginBean {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+	
+	public String getAlerta() {
+		return alerta;
+	}
+
+	public void setAlerta(String alerta) {
+		this.alerta = alerta;
+	}
+	
+	public String getAlerta2() {
+		return alerta2;
+	}
+
+	public void setAlerta2(String alerta2) {
+		this.alerta2 = alerta2;
+	}
+	
+	public String iniciarSesion() {
+		UsuarioDAO uDao = new UsuarioDAO();
+		System.out.println("Entro");
+		System.out.println(usuario.getUsuario());
+		Usuario u = uDao.findByField("usuario", usuario.getUsuario());
+		if(u != null) {
+			if(u.getUsuario().equalsIgnoreCase(usuario.getUsuario())) {
+				this.validado = u;
+				HttpSession session = (HttpSession) javax.faces.context.FacesContext.getCurrentInstance().getExternalContext()
+						.getSession(true);
+				session.setAttribute("usuario", validado.getUsuario());
+				session.setAttribute("clave", validado.getClave());
+				return "IngresoVehiculo";
+			}else {
+				this.validado = null;
+				this.alerta = "Error al iniciar sesión: credenciales inválidas";
+				return "index";
+			}
+		}else {
+			return "index";
+		}
 	}
 }

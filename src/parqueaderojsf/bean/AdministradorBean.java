@@ -1,5 +1,6 @@
-package com.parqueadero.jsf.bean;
+package parqueaderojsf.bean;
 
+/*
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -194,3 +195,5 @@ public class AdministradorBean {
 	}
 
 }
+
+*/

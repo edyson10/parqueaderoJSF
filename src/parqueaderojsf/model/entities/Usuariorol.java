@@ -1,4 +1,4 @@
-package com.parqueadero.jpa.entity;
+package parqueaderojsf.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;

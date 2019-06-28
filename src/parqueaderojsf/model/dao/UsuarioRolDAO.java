@@ -1,12 +1,11 @@
-package parqueadero.DAO;
+package parqueaderojsf.model.dao;
 
-import parqueadero.entities.Usuariorol;
-import parqueadero.util.Conexion;
+import parqueaderojsf.model.entities.Usuariorol;
+import parqueaderojsf.util.Conexion;
 
-
-public class UsuarioRolDao extends Conexion<Usuariorol> implements GenericDao<Usuariorol>{
+public class UsuarioRolDAO extends Conexion<Usuariorol> implements GenericDao<Usuariorol>{
 	
-	public UsuarioRolDao() {
+	public UsuarioRolDAO() {
 		super(Usuariorol.class);
 		// TODO Auto-generated constructor stub
 	}

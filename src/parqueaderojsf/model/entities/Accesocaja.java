@@ -27,12 +27,12 @@ public class Accesocaja implements Serializable {
 
 	//bi-directional many-to-one association to Caja
 	@ManyToOne
-	@JoinColumn(name="caja")
+	@JoinColumn(name="caja", insertable=false, updatable=false)
 	private Caja cajaBean;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="usuario")
+	@JoinColumn(name="usuario", insertable=false, updatable=false)
 	private Usuario usuarioBean;
 
 	public Accesocaja() {

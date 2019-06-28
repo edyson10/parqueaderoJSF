@@ -5,7 +5,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the ingreso database table.
  * 
@@ -114,15 +113,12 @@ public class Ingreso implements Serializable {
 	public Pago addPago(Pago pago) {
 		getPagos().add(pago);
 		pago.setIngresoBean(this);
-
 		return pago;
 	}
 
 	public Pago removePago(Pago pago) {
 		getPagos().remove(pago);
 		pago.setIngresoBean(null);
-
 		return pago;
 	}
-
 }

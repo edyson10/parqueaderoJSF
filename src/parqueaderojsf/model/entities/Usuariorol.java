@@ -3,7 +3,6 @@ package parqueaderojsf.model.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the usuariorol database table.
  * 

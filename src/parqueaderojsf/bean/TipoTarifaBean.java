@@ -1,21 +1,16 @@
-/*
-package com.parqueadero.jsf.bean;
+package parqueaderojsf.bean;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import com.parqueadero.jpa.dao.TipotarifaDAO;
-import com.parqueadero.jpa.entity.Tipotarifa;
+import parqueaderojsf.model.dao.TipotarifaDAO;
+import parqueaderojsf.model.entities.Tipotarifa;
 
-
-
-@ManagedBean
+@ManagedBean(name = "tarifaBean")
 @SessionScoped
 public class TipoTarifaBean {
 	private Tipotarifa tipotarifa = new Tipotarifa();
 	
-	
-
 	public Tipotarifa getTipotarifa() {
 		return tipotarifa;
 	}
@@ -29,4 +24,3 @@ public class TipoTarifaBean {
 		return ttDao.list();
 	}
 }
-*/

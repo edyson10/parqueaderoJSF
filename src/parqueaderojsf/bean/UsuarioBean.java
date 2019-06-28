@@ -1,5 +1,4 @@
-/*
-package com.parqueadero.jsf.bean;
+package parqueaderojsf.bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,28 +8,27 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
 
-import com.parqueadero.jpa.dao.CajaDAO;
-import com.parqueadero.jpa.dao.ClienteDAO;
-import com.parqueadero.jpa.dao.PagoDao;
-import com.parqueadero.jpa.dao.TarjetaDAO;
-import com.parqueadero.jpa.dao.TipoclienteDAO;
-import com.parqueadero.jpa.dao.UsuarioRolDAO;
-import com.parqueadero.jpa.entity.Caja;
-import com.parqueadero.jpa.entity.Cliente;
-import com.parqueadero.jpa.entity.Pago;
-import com.parqueadero.jpa.entity.Tarifa;
-import com.parqueadero.jpa.entity.Tarjeta;
-import com.parqueadero.jpa.entity.Tipocliente;
-import com.parqueadero.jpa.entity.Usuario;
-import com.parqueadero.jpa.entity.Usuariorol;
+import parqueaderojsf.model.dao.CajaDAO;
+import parqueaderojsf.model.dao.ClienteDAO;
+import parqueaderojsf.model.dao.PagoDAO;
+import parqueaderojsf.model.dao.TarjetaDAO;
+import parqueaderojsf.model.dao.TipoclienteDAO;
+import parqueaderojsf.model.dao.UsuarioRolDAO;
+import parqueaderojsf.model.entities.Caja;
+import parqueaderojsf.model.entities.Cliente;
+import parqueaderojsf.model.entities.Pago;
+import parqueaderojsf.model.entities.Tarifa;
+import parqueaderojsf.model.entities.Tarjeta;
+import parqueaderojsf.model.entities.Tipocliente;
+import parqueaderojsf.model.entities.Usuario;
+import parqueaderojsf.model.entities.Usuariorol;
 
-@ManagedBean(name = "bean2")
+@ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean {
 
-	/************* Usuario Auxiliar
-	private Usuario u= new Usuario();
-	private Cliente c= new Cliente();
+	private Usuario u = new Usuario();
+	private Cliente c = new Cliente();
 	
 	private Cliente editar= new Cliente();
 	private String fecha;
@@ -42,16 +40,16 @@ public class UsuarioBean {
 
 	
 	public void registrarCliente() {
-			ClienteDAO dao= new ClienteDAO();
+			ClienteDAO cDao = new ClienteDAO();
 			c.setFechanacimiento(java.sql.Date.valueOf(fecha));
-			c.setUsuario(1);
-			dao.insert(c);
-			c= new Cliente();
-			fecha="";
+			
+			cDao.insert(c);
+			c = new Cliente();
+			fecha = "";
 	}
 	
 	public String editar(Cliente c) {
-		this.editar=c;
+		this.editar = 	c;
 		return "editar?faces-redirect=true";
 	}
 	
@@ -83,15 +81,17 @@ public class UsuarioBean {
 		dao.insert(tarjeta);
 	}
 	
+	/*
 	public boolean esValida(Tarjeta t) {
 		if(t.getUsuarioactivo()>0) {
 			return true;
 		}
 		return false;
 	}
+	*/
 	
 	public int ingresosCajas() {
-	    PagoDao dao= new PagoDao();
+	    PagoDAO dao= new PagoDAO();
 		List<Pago> c= dao.list();
 		int valor=0;
 		for(Pago a:c) {
@@ -107,12 +107,13 @@ public class UsuarioBean {
 		return dao.list();
 	}
 	
+	/*
 	public Pago pagoCliente(Cliente d) {
-		PagoDao dao= new PagoDao();
+		PagoDAO dao= new PagoDAO();
 		return dao.findByFieldInt("usuario", d.getId());
 	}
+	*/
 
-	
 	public Usuario getU() {
 		return u;
 	}
@@ -186,4 +187,3 @@ public class UsuarioBean {
 		this.filter = filter;
 	}
 }
-*/

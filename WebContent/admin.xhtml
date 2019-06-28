@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"> 
+<h:head>
+	<meta charset="UTF-8"/>
+	<title>Parqueadero</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="shortcut icon" href="img/parqueadero.png" type="image/x-icon" />
+</h:head>
+<h:body>
+	<b:navBar brand="Parking" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
+  		<b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
+    		<b:navLink value="Inicio" href="#"></b:navLink>
+		</b:navbarLinks>
+		<b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
+		<b:navbarLinks pull="right" styleClass="hidden-xs">
+		    <b:dropMenu align="right" value="Menu" contentDisabled="#{navBarBean.dropMenuDisabled}">
+				<b:navLink value="Configuracion" href="#"></b:navLink>
+				<b:navLink value="Perfil" href="#"></b:navLink>
+				<b:navLink></b:navLink>
+				<b:navLink value="Cerrar Sesión" href="index.xhtml"></b:navLink>
+			</b:dropMenu>
+		  </b:navbarLinks>
+	</b:navBar>
+	<b:row>
+		<b:column medium-screen="6"></b:column>
+		<b:column medium-screen="2">
+			<img src="img/parqueadero.png" width="80px;" height="80px;"/>
+		</b:column>
+		<b:column medium-screen="1">
+			<h1 align="center">Parqueadero</h1>
+		</b:column>
+		<b:column medium-screen="4"></b:column>
+	</b:row>
+	<b:row styleClass="show-grid">
+  		<b:column col-xs="12" col-md="12">
+  			<h:form id="loginForm">
+			  <b:container layout="fluid">
+			    <b:panel title="Registrar usuarios" look="primary">
+			    	<b:row>
+			    		<b:column medium-screen="3"></b:column>
+			    		<b:column medium-screen="1">
+			    			<h:outputText value="Usuario:" for="username" />
+			    		</b:column>
+		        		<b:column medium-screen="4">
+		          			<b:inputText placeholder="Digite su usuaio" value="#{usuarioBean.u.usuario}"/>
+		        		</b:column>
+		        		<b:column medium-screen="4"></b:column>
+		    		</b:row>
+		    		<b:row>
+			    		<b:column medium-screen="3"></b:column>
+			    		<b:column medium-screen="1">
+			    			<h:outputText value="Clave:" for="username" />
+			    		</b:column>
+		        		<b:column medium-screen="4">
+		          			<b:inputText placeholder="*********" value="#{usuarioBean.u.clave}" type="password"/>
+		        		</b:column>
+		        		<b:column medium-screen="4"></b:column>
+		    		</b:row>
+		    		<b:row>
+			    		<b:column medium-screen="3"></b:column>
+			    		<b:column medium-screen="1">
+			    			<h:outputText value="Email:" for="username" />
+			    		</b:column>
+		        		<b:column medium-screen="4">
+		          			<b:inputText placeholder="edyson@gmail.com" value="#{usuarioBean.u.email}" type="email"/>
+		        		</b:column>
+		        		<b:column medium-screen="4"></b:column>
+		    		</b:row>
+		    		<b:row>
+			    		<b:column medium-screen="3"></b:column>
+			    		<b:column medium-screen="1">
+			    			<h:outputText value="Nombre:" for="username" />
+			    		</b:column>
+		        		<b:column medium-screen="4">
+		          			<b:inputText placeholder="Digite su nombre" value="#{usuarioBean.u.nombre}" type="text" />
+		        		</b:column>
+		        		<b:column medium-screen="4"></b:column>
+		    		</b:row>
+		    		<b:row>
+			    		<b:column medium-screen="3"></b:column>
+			    		<b:column medium-screen="1">
+			    			<h:outputText value="Documento:" for="username" />
+			    		</b:column>
+		        		<b:column medium-screen="4">
+		          			<b:inputText placeholder="1234567890" value="#{usuarioBean.u.documento}" type="number" />
+		        		</b:column>
+		        		<b:column medium-screen="4"></b:column>
+		    		</b:row>
+		    		<b:row>
+			    		<b:column medium-screen="3"></b:column>
+			    		<b:column medium-screen="1">
+			    			<h:outputText value="Fecha Nacimiento:" for="username" />
+			    		</b:column>
+		        		<b:column medium-screen="4">
+		          			<b:inputText placeholder="" value="#{usuarioBean.u.documento}" type="date"/>
+		        		</b:column>
+		        		<b:column medium-screen="4"></b:column>
+		    		</b:row>
+		    		<b:row>
+		    			<b:column medium-screen="4">
+		    			</b:column>
+				        <b:column medium-screen="4">
+				        	<b:commandButton value="Iniciar Sesion" action="#{usuarioBean.registrarCliente()}" look="primary" style="width:100%" />
+				        </b:column>
+		      		</b:row>
+		    		
+			    </b:panel>
+			  </b:container>
+			</h:form>
+  		</b:column>
+	</b:row>
+</h:body>
+<footer class="footer">
+	<b:row>
+		<b:column medium-screen="3" align="center"></b:column>
+		<b:column medium-screen="6" align="center">
+			Todos los derechos reservados &copy; Edyson Leal
+		</b:column>
+		<b:column medium-screen="3" align="center"></b:column>
+	</b:row>
+</footer>
+</html>

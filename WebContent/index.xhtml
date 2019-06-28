@@ -61,12 +61,9 @@
 		        </b:column>
 		      	<b:column medium-screen="10">
 		      		<b:formGroup>
-	    			<b:selectOneMenu value="#{loginbean}" colMd="2" required="true" labelColMd="2">
+	    			<b:selectOneMenu value="#{loginbean.comboRol}" colMd="2" required="true" labelColMd="2">
 	      				<f:selectItem itemLabel="(Seleccione)" itemValue="" />
-					    <f:selectItem itemLabel="Administrador" itemValue="1" />
-					    <f:selectItem itemLabel="Auxiliar" itemValue="2" />
-					    <f:selectItem itemLabel="Caja" itemValue="3" />
-					    <f:selectItem itemLabel="Porteria" itemValue="4" />
+					    <f:selectItems value="#{rolBean.listarRol()}" var="rol" itemLabel="#{rol.descripcion}" itemValue="#{rol.id}" />
 	    			</b:selectOneMenu>
 	  				</b:formGroup>
 		      	</b:column>
@@ -87,4 +84,13 @@
 		</h:form>
 	</b:column>
 </h:body>
+<footer class="footer">
+	<b:row>
+		<b:column medium-screen="3" align="center"></b:column>
+		<b:column medium-screen="6" align="center">
+			Todos los derechos reservados &copy; Edyson Leal
+		</b:column>
+		<b:column medium-screen="3" align="center"></b:column>
+	</b:row>
+</footer>
 </html>

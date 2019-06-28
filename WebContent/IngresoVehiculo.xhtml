@@ -13,7 +13,8 @@
 <h:body>
 	<b:navBar brand="Parking" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
   		<b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
-    		<b:navLink value="Inicio" href="#"></b:navLink>
+    		<b:navLink value="Ingreso de vehiculos" href="IngresoVehiculo.xhtml"></b:navLink>
+    		<b:navLink value="Salida de vehiculos" href="salidaVehiculo.xhtml"></b:navLink>
 		</b:navbarLinks>
 		<b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
 		<b:navbarLinks pull="right" styleClass="hidden-xs">
@@ -21,7 +22,7 @@
 				<b:navLink value="Configuracion" href="#"></b:navLink>
 				<b:navLink value="Perfil" href="#"></b:navLink>
 				<b:navLink></b:navLink>
-				<b:navLink value="Cerrar Sesión" href="#"></b:navLink>
+				<b:navLink value="Cerrar Sesion" action="#{loginbean.logout()}" href="#"></b:navLink>
 			</b:dropMenu>
 		  </b:navbarLinks>
 	</b:navBar>
@@ -49,31 +50,36 @@
 	<b:modal id="amodalCarro" title="INGRESO DE CARROS" styleClass="modalPseudoClass">
 	  	<b:form>
 	  		<b:row>
-		        <b:column medium-screen="2">
-		          	<h:outputText value="CODIGO:" for="username" />
+		        <b:column medium-screen="4">
+		          	<h:outputText value="TIPO DE INGRESO:"/>
 		        </b:column>
-		        <b:column medium-screen="10">
-		    		<b:inputText placeholder="Digite el codigo de la tarjeta" value="#{inputTextBean.text}"/>      
-		        </b:column>
-		    </b:row>
-		    <b:row>
-		        <b:column medium-screen="2">
-		          	<h:outputText value="FECHA INGRESO:" for="username" />
-		        </b:column>
-		        <b:column medium-screen="10">
-		    		<b:dateTimePicker value="#{dateTimeBean.justNow}" widgetParent="#picker-anchor" iconAwesome="clock-o" /> 
+		        <b:column medium-screen="6">
+		        	<b:formGroup>
+			    		<b:selectOneMenu value="#{porteroBean.comboTipoIngreso}" required="true">
+						    <f:selectItem itemLabel="Normal" itemValue="1" />
+						    <f:selectItem itemLabel="Tarjeta RFID" itemValue="2" />
+						    <f:ajax render="comboTipoIngreso"/>
+		    			</b:selectOneMenu>
+		    			</b:formGroup>      
 		        </b:column>
 		    </b:row>
-		    <b:row>
-		    	<b:column medium-screen="2">
-		          	<h:outputText value="FECHA SALIDA:" for="username" />
+		    <b:row rendered="#{porteroBean.comboTipoIngreso==2}">
+		        <b:column medium-screen="4">
+		          	<h:outputText id="id" value="Tarjeta RFID:" for="username" />
 		        </b:column>
-		    	<b:column medium-screen="10">
-		    		<b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="false" />
-		    	</b:column>
+		        <b:column medium-screen="6">
+		    		<b:inputText id="comboTipoIngreso" value="#{porteroBean.rfid}" placeholder="Digite el numero de la tarjeta RFID"/>      
+		        </b:column>
 		    </b:row>
 		    <br/>
-		   	<b:commandButton value="Registrar" action="#{loginBean.iniciarSesion()}" update="@form" look="primary" style="width:100%" />		    
+		   	<b:commandButton value="Registrar" action="#{porteroBean.ingresoCarro()}" update="@form" look="primary" style="width:100%" />		    
+			<br/>
+		    <br/>
+		    <b:row class ="text-center">
+		        <b:column medium-screen="12">
+		    		<b:label rendered="#{porteroBean.comboTipoIngreso==1}" value="#{porteroBean.ticket}" placeholder="Numero de Ticket" style="font-size: 15px; text-align: center;"/>
+				</b:column>
+		    </b:row>
 		</b:form>
 	  	<f:facet name="footer">
     		<b:button value="Cerrar" dismiss="modal" />
@@ -82,31 +88,36 @@
 	<b:modal id="amodalMoto" title="INGRESO DE MOTOS" styleClass="modalPseudoClass">
 	  	<b:form>
 	  		<b:row>
-		        <b:column medium-screen="2">
-		          	<h:outputText value="CODIGO:" for="username" />
+		        <b:column medium-screen="4">
+		          	<h:outputText value="TIPO DE INGRESO:"/>
 		        </b:column>
-		        <b:column medium-screen="10">
-		    		<b:inputText placeholder="Digite el codigo de la tarjeta" value="#{inputTextBean.text}"/>      
-		        </b:column>
-		    </b:row>
-		    <b:row>
-		        <b:column medium-screen="2">
-		          	<h:outputText value="FECHA INGRESO:" for="username" />
-		        </b:column>
-		        <b:column medium-screen="10">
-		    		<b:dateTimePicker value="#{dateTimeBean.justNow}" widgetParent="#picker-anchor" iconAwesome="clock-o" /> 
+		        <b:column medium-screen="6">
+		        	<b:formGroup>
+			    		<b:selectOneMenu value="#{porteroBean.comboTipoIngreso}" required="true">
+						    <f:selectItem itemLabel="Normal" itemValue="1" />
+						    <f:selectItem itemLabel="Tarjeta RFID" itemValue="2" />
+						    <f:ajax render="comboTipoIngreso"/>
+		    			</b:selectOneMenu>
+		    			</b:formGroup>      
 		        </b:column>
 		    </b:row>
-		    <b:row>
-		    	<b:column medium-screen="2">
-		          	<h:outputText value="FECHA SALIDA:" for="username" />
+		    <b:row rendered="#{porteroBean.comboTipoIngreso==2}">
+		        <b:column medium-screen="4">
+		          	<h:outputText id="id" value="Tarjeta RFID:" for="username" />
 		        </b:column>
-		    	<b:column medium-screen="10">
-		    		<b:dateTimePicker value="#{dateTimeBean.justNow}" disabled="false" />
-		    	</b:column>
+		        <b:column medium-screen="6">
+		    		<b:inputText id="comboTipoIngreso" value="#{porteroBean.rfid}" placeholder="Digite el numero de la tarjeta RFID"/>      
+		        </b:column>
 		    </b:row>
 		    <br/>
-		   	<b:commandButton value="Registrar" action="#{loginBean.iniciarSesion()}" update="@form" look="primary" style="width:100%" />		    
+		   	<b:commandButton value="Registrar" action="#{porteroBean.ingresoMoto()}" update="@form" look="primary" style="width:100%" />		    		    
+			<br/>
+		    <br/>
+		    <b:row class ="text-center">
+		        <b:column medium-screen="12">
+		    		<b:label rendered="#{porteroBean.comboTipoIngreso==1}" value="#{porteroBean.ticket}" placeholder="Numero de Ticket" style="font-size: 15px; text-align: center;"/>
+				</b:column>
+		    </b:row>
 		</b:form>
 	  	<f:facet name="footer">
     		<b:button value="Cerrar" dismiss="modal" />

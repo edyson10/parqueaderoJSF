@@ -8,11 +8,13 @@
 	<meta charset="UTF-8"/>
 	<title>Parqueadero</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="shortcut icon" href="img/parqueadero.png" type="image/x-icon" />
 </h:head>
 <h:body>
 	<b:navBar brand="Parking" brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
   		<b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
-    		<b:navLink value="Inicio" href="#"></b:navLink>
+    		<b:navLink value="Ingreso de vehiculos" href="IngresoVehiculo.xhtml"></b:navLink>
+    		<b:navLink value="Salida de vehiculos" href="salidaVehiculo.xhtml"></b:navLink>
 		</b:navbarLinks>
 		<b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
 		<b:navbarLinks pull="right" styleClass="hidden-xs">
@@ -20,9 +22,9 @@
 				<b:navLink value="Configuracion" href="#"></b:navLink>
 				<b:navLink value="Perfil" href="#"></b:navLink>
 				<b:navLink></b:navLink>
-				<b:navLink value="Cerrar Sesión" href="#"></b:navLink>
+				<b:navLink value="Cerrar Sesion" action="#{loginbean.logout()}" href="index.xhtml"></b:navLink>
 			</b:dropMenu>
-		  </b:navbarLinks>
+		</b:navbarLinks>
 	</b:navBar>
 	<b:row>
 		<b:column medium-screen="6"></b:column>
@@ -34,5 +36,39 @@
 		</b:column>
 		<b:column medium-screen="4"></b:column>
 	</b:row>
+	<b:row styleClass="show-grid">
+  		<b:column col-xs="12" col-md="12">
+  			<h:form id="loginForm">
+			  <b:container layout="fluid">
+			    <b:panel title="Salida de los vehiculos" look="primary">
+			    	<b:row>
+			    		<b:column medium-screen="2"></b:column>
+		        		<b:column medium-screen="6">
+		          			<b:inputText placeholder="Ticket" value="#{porteroBean.ingreso.numero}"/>
+		        		</b:column>
+		        		<b:column medium-screen="2">
+		    				<b:commandButton value="Salida" action="#{porteroBean.salida()}" update="@form" look="primary" style="width:100%" />
+		        		</b:column>
+		        		<b:column medium-screen="2"></b:column>
+		    		</b:row>
+		    		<b:row>
+				      	<div>
+					  		<h:outputText value="#{porteriaBean.alerta}" style="color: red; display: block; width:100%; text-align:center;"/>
+						</div>
+				    </b:row>
+			    </b:panel>
+			  </b:container>
+			</h:form>
+  		</b:column>
+	</b:row>
 </h:body>
+<footer class="footer">
+	<b:row>
+		<b:column medium-screen="3" align="center"></b:column>
+		<b:column medium-screen="6" align="center">
+			Todos los derechos reservados &copy; Edyson Leal
+		</b:column>
+		<b:column medium-screen="3" align="center"></b:column>
+	</b:row>
+</footer>
 </html>

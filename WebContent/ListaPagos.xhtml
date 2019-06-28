@@ -22,7 +22,7 @@
 				<b:navLink value="Configuracion" href="#"></b:navLink>
 				<b:navLink value="Perfil" href="#"></b:navLink>
 				<b:navLink></b:navLink>
-				<b:navLink value="Cerrar Sesión" href="#"></b:navLink>
+				<b:navLink value="Cerrar Sesión" href="index.xhtml"></b:navLink>
 			</b:dropMenu>
 		  </b:navbarLinks>
 	</b:navBar>
@@ -37,12 +37,12 @@
 				    </b:row>
 				    <br/>
 				    <b:row>
-				    	<b:dataTable value="#{carPool.carPool}" var="car">
-						    <b:dataTableColumn value="#{car.fecha}" />
-						    <b:dataTableColumn value="#{car.ticket}" />
-						    <b:dataTableColumn value="#{car.inicio}" />
-						    <b:dataTableColumn value="#{car.fin}"  order="asc"/>
-						    <b:dataTableColumn value="#{car.valor}" />
+				    	<b:dataTable value="#{usuarioCajaBean.listarPagos()}" var="pagos">
+						    <b:dataTableColumn value="#{pagos.fecha}" />
+						    <b:dataTableColumn value="#{pagos.valor}" />
+						    <b:dataTableColumn value="#{pagos.ingresoBean.numero}" />
+						    <b:dataTableColumn value="#{pagos.usuarioBean.nombre}"/>
+						    <b:dataTableColumn value="#{pagos.cajaBean.descripcion}" />
   						</b:dataTable>
 				    </b:row>
 			    </b:panel>
@@ -51,4 +51,13 @@
   		</b:column>
 	</b:row>
 </h:body>
+<footer class="footer">
+	<b:row>
+		<b:column medium-screen="3" align="center"></b:column>
+		<b:column medium-screen="6" align="center">
+			Todos los derechos reservados &copy; Edyson Leal
+		</b:column>
+		<b:column medium-screen="3" align="center"></b:column>
+	</b:row>
+</footer>
 </html>
